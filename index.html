@@ -2,470 +2,212 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Apex Media Network — full-stack media operation: production, talent representation, and distribution infrastructure for creators and brands.">
-<title>Apex Media Network</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apex Media &mdash; Full-Service Media Team</title>
+<meta name="description" content="Apex Media LLC is a Puerto Rico media company running content operations end to end for creators and brands: production, editing, social management, clipping and distribution.">
+<link rel="canonical" href="https://apexmedia.space/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Apex Media">
+<meta property="og:title" content="Apex Media &mdash; Full-Service Media Team">
+<meta property="og:description" content="Apex Media LLC is a Puerto Rico media company running content operations end to end for creators and brands: production, editing, social management, clipping and distribution.">
+<meta property="og:url" content="https://apexmedia.space/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0c'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23ff4b23'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --bg:#0a0a0c;
-    --surface:#141518;
-    --surface-2:#1b1c20;
-    --border:#2a2b30;
-    --border-soft:#202126;
-    --text:#f1efe9;
-    --text-dim:#9a9ca3;
-    --text-faint:#5c5e66;
-    --accent:#ff4b23;
-    --accent-soft:rgba(255,75,35,0.14);
-    --chrome:#c9cdd3;
-  }
-
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Archivo',ui-sans-serif,system-ui,sans-serif;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  ::selection{background:var(--accent);color:#0a0a0c;}
-
-  .font-display{font-family:'Big Shoulders Display',ui-sans-serif,sans-serif; text-transform:uppercase;}
-  .font-mono{font-family:'JetBrains Mono',ui-monospace,monospace;}
-
-  .h-hero{font-weight:900; font-size:clamp(2.6rem,8vw,7.2rem); line-height:0.92; letter-spacing:-0.01em; text-wrap:balance;}
-  .h-section{font-weight:800; font-size:clamp(2rem,5vw,3.6rem); line-height:1.02; text-wrap:balance;}
-  .h-card{font-weight:800; font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.08; text-wrap:balance;}
-  .stat-num{font-weight:900; font-size:clamp(3rem,6.4vw,5.2rem); line-height:0.85; font-variant-numeric:tabular-nums;}
-  .eyebrow{font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-dim);}
-
-  a{color:inherit; text-decoration:none;}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
-
-  /* faint broadcast test-pattern texture */
-  .grain-field{
-    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:0.05;
-    background-image: repeating-linear-gradient(90deg, var(--chrome) 0px, var(--chrome) 1px, transparent 1px, transparent 96px);
-  }
-
-  .rec-dot{
-    width:7px; height:7px; border-radius:50%; background:var(--accent); flex:none;
-    box-shadow:0 0 0 0 rgba(255,75,35,0.6);
-    animation: recpulse 1.9s infinite;
-  }
-  @keyframes recpulse{
-    0%{ box-shadow:0 0 0 0 rgba(255,75,35,0.55); }
-    70%{ box-shadow:0 0 0 9px rgba(255,75,35,0); }
-    100%{ box-shadow:0 0 0 0 rgba(255,75,35,0); }
-  }
-
-  .ticker-wrap{ overflow:hidden; white-space:nowrap; }
-  .ticker-track{ display:inline-flex; width:max-content; animation: marquee 32s linear infinite; }
-  @keyframes marquee{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
-
-  .case-card{ position:relative; transition: background-color .3s ease, border-color .3s ease; }
-  .case-card::before, .case-card::after{
-    content:''; position:absolute; width:20px; height:20px; opacity:0;
-    transition: opacity .25s ease, transform .25s ease; pointer-events:none;
-  }
-  .case-card::before{ top:-1px; left:-1px; border-top:2px solid var(--accent); border-left:2px solid var(--accent); transform:translate(8px,8px); }
-  .case-card::after{ bottom:-1px; right:-1px; border-bottom:2px solid var(--accent); border-right:2px solid var(--accent); transform:translate(-8px,-8px); }
-  .case-card:hover::before, .case-card:hover::after{ opacity:1; transform:translate(0,0); }
-  .case-card:hover{ border-color: var(--border); background:var(--surface-2); }
-
-  .scanlines{
-    background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0px, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 3px);
-  }
-
-  .btn-fill{ position:relative; overflow:hidden; z-index:0; }
-  .btn-fill::before{
-    content:''; position:absolute; inset:0; background:var(--accent); transform:translateX(-101%);
-    transition: transform .32s cubic-bezier(.65,0,.35,1); z-index:-1;
-  }
-  .btn-fill:hover::before{ transform:translateX(0); }
-
-  .nav-link{ position:relative; }
-  .nav-link::after{ content:''; position:absolute; left:0; right:0; bottom:-4px; height:1px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform .25s ease; }
-  .nav-link:hover::after{ transform:scaleX(1); }
-
-  @media (prefers-reduced-motion: reduce){
-    .ticker-track, .rec-dot{ animation:none !important; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<div id="root"></div>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <span class="rec"></span>
+      <span class="mark display">APX</span>
+      <span class="sub">Apex Media</span>
+    </a>
+    <nav class="nav-links"><a href="/work">Work</a><a href="/services">Services</a><a href="/clipsy">Clipsy</a><a href="/about">About</a><a href="/contact">Contact</a></nav>
+    <a class="btn nav-cta" href="/contact">Start a project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"><a href="/work">Work</a><a href="/services">Services</a><a href="/clipsy">Clipsy</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/contact" style="color:var(--accent)">Start a project &rarr;</a></div>
+</header>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
-
-<script type="text/babel" data-presets="react">
-const { useState, useEffect, useRef } = React;
-
-/* ---------------------------------------------------------------
-   Icon set — minimalist stroke icons in the Lucide visual language
-   (24x24, round caps/joins, currentColor). Hand-drawn for this
-   sandbox since npm icon packages can't be imported here; drop-in
-   replaceable with `lucide-react` imports in a real build.
------------------------------------------------------------------ */
-const IconBase = ({ children, size = 20, className = "" }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
-       strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    {children}
-  </svg>
-);
-const ArrowUpRight = (p) => <IconBase {...p}><path d="M7 17 17 7"/><path d="M8 7h9v9"/></IconBase>;
-const ArrowRight = (p) => <IconBase {...p}><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></IconBase>;
-const ChevronDown = (p) => <IconBase {...p}><path d="M6 9l6 6 6-6"/></IconBase>;
-const Mail = (p) => <IconBase {...p}><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></IconBase>;
-const Copy = (p) => <IconBase {...p}><rect x="9" y="9" width="12" height="12" rx="1.5"/><path d="M5 15V4.5A1.5 1.5 0 0 1 6.5 3H16"/></IconBase>;
-const Check = (p) => <IconBase {...p}><path d="M4 12l6 6 10-12"/></IconBase>;
-const Camera = (p) => <IconBase {...p}><rect x="3" y="7" width="14" height="11" rx="1.5"/><path d="M8 7l1.6-2.5h2.8L14 7"/><circle cx="10" cy="12.5" r="3"/><path d="M17.5 10.5 21 8.5v8l-3.5-2"/></IconBase>;
-const Scissors = (p) => <IconBase {...p}><circle cx="6" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><path d="M20 5 8 13"/><path d="M8 11 20 19"/></IconBase>;
-const Layers = (p) => <IconBase {...p}><path d="M12 3l9 5-9 5-9-5 9-5Z"/><path d="M3 13l9 5 9-5"/></IconBase>;
-const Radio = (p) => <IconBase {...p}><circle cx="12" cy="12" r="2.2"/><path d="M8.5 8.5a5 5 0 0 0 0 7"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M5.5 5.5a9.5 9.5 0 0 0 0 13"/><path d="M18.5 5.5a9.5 9.5 0 0 1 0 13"/></IconBase>;
-const Monitor = (p) => <IconBase {...p}><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M9 20h6"/><path d="M12 16v4"/></IconBase>;
-const Users = (p) => <IconBase {...p}><circle cx="9" cy="8.5" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 7a3 3 0 0 1 0 6"/><path d="M21 20c0-2.7-1.7-5-4.2-5.7"/></IconBase>;
-const TrendUp = (p) => <IconBase {...p}><path d="M3 17l6-6 4 4 8-9"/><path d="M15 6h6v6"/></IconBase>;
-const Globe = (p) => <IconBase {...p}><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></IconBase>;
-const Menu = (p) => <IconBase {...p}><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></IconBase>;
-const X = (p) => <IconBase {...p}><path d="M6 6l12 12"/><path d="M18 6 6 18"/></IconBase>;
-
-/* ------------------------------- Data ------------------------------- */
-const TICKER_ITEMS = [
-  "INSTAGRAM","TIKTOK","YOUTUBE","SNAPCHAT","TWITCH","KICK",
-  "MINERALS & RESOURCES","AI / TECH","CLIPSY.CLUB","NETFLIX"
-];
-
-const METRICS = [
-  { num: "04", label: "Simultaneous Platforms", desc: "Instagram, TikTok, YouTube and Snapchat, multistreamed live to Twitch and Kick from a single rig." },
-  { num: "02", label: "Network Verticals", desc: "Purpose-built clipping networks running Minerals / Mining / Resources and AI / Tech content at scale." },
-  { num: "3×", label: "Daily Cadence", desc: "Three pieces of brand content published every day, across every platform, with no gaps in the feed." },
-  { num: "01", label: "Netflix Placement", desc: "One Ultimatum Season 4 moment, engineered into an active Perfect Match casting pitch." },
-];
-
-const CASES = [
-  {
-    reel: "REEL 01", tag: "TALENT & CONTENT", icon: Users, size: "lg",
-    title: "From Reality TV Villain to Full Media Operation",
-    body: "A franchise-first ejection from Netflix's The Ultimatum Season 4 made our client the most talked-about name of the season. We turned the moment into infrastructure: real-time engagement across every comment section, on-set recording and asset pipelines for daily output, and a live pitch now in front of Kinetic Content's casting team for Perfect Match.",
-    meta: ["Netflix", "The Ultimatum S4", "Perfect Match Pitch"],
-  },
-  {
-    reel: "REEL 02", tag: "PLATFORM", icon: Layers, size: "md",
-    title: "Everything Clipping, In One Place",
-    body: "clipsy.club aggregates clipping campaigns from Whop, clipping.net and beyond into a single destination, funneling traffic into a Discord built to convert — the front door to a business built to run campaigns directly, not take a cut of someone else's.",
-    meta: ["clipsy.club", "Discord Community", "Live"],
-  },
-  {
-    reel: "REEL 03", tag: "DISTRIBUTION", icon: Scissors, size: "md",
-    title: "A Clipping Network Built for Two Industries",
-    body: "Multi-page clipping infrastructure spanning Minerals / Mining / Resources and AI / Tech, engineered with content-ratio strategy and cross-platform fingerprint evasion so distribution survives contact with the algorithm.",
-    meta: ["Minerals & Resources", "AI / Tech", "Multi-Platform"],
-  },
-  {
-    reel: "REEL 04", tag: "PRODUCTION", icon: Camera, size: "lg",
-    title: "One Broadcast, Four Platforms, Zero Lag",
-    body: "A production stack — Sony a7 V, SM7B and Rodecaster Pro, a DJI wireless mic, Restream and Streamlabs — built to simulcast the same broadcast to YouTube, Kick, Twitch and TikTok at once, on location or in studio.",
-    meta: ["Multistream", "On-Location", "Studio"],
-  },
-];
-
-/* ------------------------------ Sections ----------------------------- */
-function Nav() {
-  const [open, setOpen] = useState(false);
-  const links = [
-    { href: "#work", label: "Work" },
-    { href: "#method", label: "Method" },
-    { href: "#clipsy", label: "Clipsy" },
-    { href: "#contact", label: "Contact" },
-  ];
-  return (
-    <header className="fixed top-0 left-0 right-0 z-40 border-b" style={{borderColor:"var(--border-soft)", background:"rgba(10,10,12,0.82)", backdropFilter:"blur(10px)"}}>
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2.5">
-          <span className="rec-dot"></span>
-          <span className="font-display text-xl tracking-tight">APX</span>
-          <span className="font-mono text-[11px] hidden sm:inline" style={{color:"var(--text-faint)"}}>/ APEX MEDIA NETWORK</span>
-        </a>
-        <nav className="hidden md:flex items-center gap-8 font-mono text-xs" style={{letterSpacing:"0.06em"}}>
-          {links.map(l => (
-            <a key={l.href} href={l.href} className="nav-link uppercase" style={{color:"var(--text-dim)"}}>{l.label}</a>
-          ))}
-        </nav>
-        <a href="#contact" className="btn-fill hidden md:inline-flex items-center gap-2 px-4 py-2 border font-mono text-xs uppercase" style={{borderColor:"var(--border)", letterSpacing:"0.06em"}}>
-          Start a Project <ArrowUpRight size={14}/>
-        </a>
-        <button className="md:hidden" onClick={() => setOpen(v=>!v)} aria-label="Toggle menu">
-          {open ? <X size={22}/> : <Menu size={22}/>}
-        </button>
-      </div>
-      {open && (
-        <div className="md:hidden border-t px-6 py-5 flex flex-col gap-4 font-mono text-sm uppercase" style={{borderColor:"var(--border-soft)", background:"var(--bg)"}}>
-          {links.map(l => <a key={l.href} href={l.href} onClick={()=>setOpen(false)} style={{color:"var(--text-dim)"}}>{l.label}</a>)}
-          <a href="#contact" onClick={()=>setOpen(false)} className="pt-2" style={{color:"var(--accent)"}}>Start a Project →</a>
-        </div>
-      )}
-    </header>
-  );
-}
-
-function Ticker() {
-  const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
-  return (
-    <div className="ticker-wrap border-y" style={{borderColor:"var(--border-soft)", background:"var(--surface)"}}>
-      <div className="ticker-track py-3">
-        {items.map((t, i) => (
-          <span key={i} className="font-mono text-xs uppercase px-6 flex items-center gap-6" style={{color:"var(--text-faint)", letterSpacing:"0.1em"}}>
-            {t} <span style={{color:"var(--accent)"}}>●</span>
-          </span>
-        ))}
+<section class="pad" style="position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(90deg,var(--chrome) 0 1px,transparent 1px 96px);pointer-events:none"></div>
+  <div class="wrap" style="position:relative">
+    <div class="row gap12 mb24"><span class="rec"></span><span class="eyebrow">Apex Media LLC &middot; Dorado, Puerto Rico</span></div>
+    <h1 class="hero">The media team behind<br>the people you&rsquo;re<br><span class="accent">already watching.</span></h1>
+    <div class="split mt48" style="align-items:end">
+      <p class="lead">Apex Media is a full-service media company. We produce, edit, post, and grow &mdash; running content operations end to end for creators and brands, and operating our own clipping platform, Clipsy.</p>
+      <div class="row wrapf gap16" style="justify-content:flex-end">
+        <a class="btn btn-primary" href="/work">View our work <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+        <a class="btn" href="/services">What we do</a>
       </div>
     </div>
-  );
-}
+  </div>
+</section>
 
-function Hero() {
-  return (
-    <section id="top" className="relative pt-40 pb-20 px-6 md:px-10 border-b" style={{borderColor:"var(--border-soft)"}}>
-      <div className="max-w-[1400px] mx-auto">
-        <div className="flex items-center gap-2 mb-8">
-          <span className="rec-dot"></span>
-          <span className="eyebrow">Multi-Vertical Media Network — Dorado Beach, PR</span>
-        </div>
-        <h1 className="font-display h-hero max-w-5xl">
-          We build the machine <span style={{color:"var(--accent)"}}>behind</span> the moment.
-        </h1>
-        <div className="mt-10 grid md:grid-cols-12 gap-8 items-end">
-          <p className="md:col-span-7 text-lg md:text-xl" style={{color:"var(--text-dim)"}}>
-            Apex Media Network is a full-stack media operation — production, talent representation,
-            and distribution infrastructure for creators and brands who need more than a single video.
-            One story, engineered to reach every feed at once.
-          </p>
-          <div className="md:col-span-5 flex flex-wrap gap-4 md:justify-end">
-            <a href="#work" className="btn-fill inline-flex items-center gap-2 px-6 py-3.5 font-mono text-xs uppercase" style={{background:"var(--accent)", color:"#0a0a0c", letterSpacing:"0.06em"}}>
-              View Our Work <ArrowUpRight size={14}/>
-            </a>
-            <a href="#method" className="inline-flex items-center gap-2 px-6 py-3.5 border font-mono text-xs uppercase nav-link" style={{borderColor:"var(--border)", letterSpacing:"0.06em"}}>
-              Our Method
-            </a>
-          </div>
-        </div>
+<div class="ticker"><div class="ticker-track"><span>Instagram <b>&#9679;</b></span><span>TikTok <b>&#9679;</b></span><span>YouTube <b>&#9679;</b></span><span>Snapchat <b>&#9679;</b></span><span>Twitch <b>&#9679;</b></span><span>Kick <b>&#9679;</b></span><span>Creator Management <b>&#9679;</b></span><span>Clipping Networks <b>&#9679;</b></span><span>Live Production <b>&#9679;</b></span><span>Brand Deals <b>&#9679;</b></span><span>Clipsy.club <b>&#9679;</b></span><span>Instagram <b>&#9679;</b></span><span>TikTok <b>&#9679;</b></span><span>YouTube <b>&#9679;</b></span><span>Snapchat <b>&#9679;</b></span><span>Twitch <b>&#9679;</b></span><span>Kick <b>&#9679;</b></span><span>Creator Management <b>&#9679;</b></span><span>Clipping Networks <b>&#9679;</b></span><span>Live Production <b>&#9679;</b></span><span>Brand Deals <b>&#9679;</b></span><span>Clipsy.club <b>&#9679;</b></span></div></div>
+
+<section class="pad">
+  <div class="wrap">
+    <div class="row between wrapf gap24 mb48" style="align-items:flex-end">
+      <div>
+        <div class="eyebrow mb16">What we do</div>
+        <h2 class="sec">A whole media department,<br>without the headcount.</h2>
       </div>
-    </section>
-  );
-}
-
-function Metrics() {
-  return (
-    <section className="px-6 md:px-10 py-20 border-b" style={{borderColor:"var(--border-soft)"}}>
-      <div className="max-w-[1400px] mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-px" style={{background:"var(--border-soft)"}}>
-        {METRICS.map((m, i) => (
-          <div key={i} className="p-8 md:p-10" style={{background:"var(--bg)"}}>
-            <div className="font-display stat-num" style={{color: i === 0 ? "var(--accent)" : "var(--text)"}}>{m.num}</div>
-            <div className="eyebrow mt-4 mb-2">{m.label}</div>
-            <p className="text-sm" style={{color:"var(--text-dim)"}}>{m.desc}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function MediaPlaceholder({ Icon, tone }) {
-  return (
-    <div className="scanlines relative h-48 md:h-56 border-b flex items-center justify-center overflow-hidden"
-         style={{borderColor:"var(--border)", background:"linear-gradient(160deg, var(--surface-2), var(--bg))"}}>
-      <Icon size={40} className="opacity-30" />
-      <span className="absolute top-3 left-3 font-mono text-[10px] flex items-center gap-1.5" style={{color:"var(--text-faint)"}}>
-        <span className="rec-dot"></span> REC
-      </span>
-      <span className="absolute bottom-3 right-3 font-mono text-[10px]" style={{color:"var(--text-faint)"}}>00:00:04:12</span>
+      <p style="max-width:36ch;font-size:.93rem">Most creators piece together an editor here, a manager there, a friend who films. We replace all of it with one team that owns the whole pipeline.</p>
     </div>
-  );
-}
+    <div class="grid g3"><a class="card brackets" href="/services#social">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><circle cx="9" cy="8.5" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 7a3 3 0 0 1 0 6"/><path d="M21 20c0-2.7-1.7-5-4.2-5.7"/></svg></div>
+          <h4>Social Media Management</h4><p>Account strategy, daily posting, growth, and comment-section community management across every platform your audience actually uses.</p>
+          <span class="card-link">Details <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="card brackets" href="/services#editing">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M3 15h18M8 4v16M16 4v16"/></svg></div>
+          <h4>Video Editing &amp; Post</h4><p>Short-form edits built around hooks, captions, and motion graphics &mdash; produced on a daily cadence, not a monthly one.</p>
+          <span class="card-link">Details <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="card brackets" href="/services#production">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><rect x="3" y="7" width="14" height="11" rx="1.5"/><path d="M8 7l1.6-2.5h2.8L14 7"/><circle cx="10" cy="12.5" r="3"/><path d="M17.5 10.5 21 8.5v8l-3.5-2"/></svg></div>
+          <h4>Production &amp; Recording</h4><p>On-set and on-location capture, studio-grade audio, multicam shoots. We show up with the rig and run the day.</p>
+          <span class="card-link">Details <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="card brackets" href="/services#clipping">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><circle cx="6" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><path d="M20 5 8 13"/><path d="M8 11 20 19"/></svg></div>
+          <h4>Clipping &amp; Distribution</h4><p>Multi-account clipping networks that turn one piece of footage into hundreds of native posts across platforms.</p>
+          <span class="card-link">Details <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="card brackets" href="/services#live">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><circle cx="12" cy="12" r="2.2"/><path d="M8.5 8.5a5 5 0 0 0 0 7"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M5.5 5.5a9.5 9.5 0 0 0 0 13"/><path d="M18.5 5.5a9.5 9.5 0 0 1 0 13"/></svg></div>
+          <h4>Live &amp; Multistream</h4><p>Simulcast one broadcast to YouTube, Twitch, Kick, and TikTok at once, from a studio or the middle of a street.</p>
+          <span class="card-link">Details <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="card brackets" href="/services#deals">
+          <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M8 12l3-3 3 3 3-3"/><path d="M2 9l4-3 6 4"/><path d="M22 9l-4-3-4 3"/><path d="M4 12l5 5 3-2 3 2 5-5"/></svg></div>
+          <h4>Brand &amp; Talent Deals</h4><p>Media kits, partnership outreach, sponsorship negotiation, and casting placement for the talent we represent.</p>
+          <span class="card-link">Details <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></span></a></div>
+  </div>
+</section>
 
-function CaseCard({ c }) {
-  const Icon = c.icon;
-  const span = c.size === "lg" ? "lg:col-span-7" : "lg:col-span-5";
-  return (
-    <article className={`case-card border ${span}`} style={{borderColor:"var(--border-soft)"}}>
-      <MediaPlaceholder Icon={Icon} />
-      <div className="p-7 md:p-9">
-        <div className="flex items-center justify-between mb-5 font-mono text-[11px] uppercase" style={{color:"var(--text-faint)", letterSpacing:"0.1em"}}>
-          <span>{c.reel}</span>
-          <span className="px-2.5 py-1 border" style={{borderColor:"var(--border)", color:"var(--accent)"}}>{c.tag}</span>
-        </div>
-        <h3 className="font-display h-card mb-4">{c.title}</h3>
-        <p className="text-[15px] leading-relaxed mb-6" style={{color:"var(--text-dim)"}}>{c.body}</p>
-        <div className="flex flex-wrap gap-x-4 gap-y-2 font-mono text-[11px] uppercase" style={{color:"var(--text-faint)", letterSpacing:"0.06em"}}>
-          {c.meta.map((m, i) => (
-            <span key={i} className="flex items-center gap-2">
-              {i > 0 && <span style={{color:"var(--border)"}}>/</span>} {m}
-            </span>
-          ))}
-        </div>
+<section class="pad">
+  <div class="wrap">
+    <div class="eyebrow mb24">By the numbers</div>
+    <div class="metrics"><div class="metric"><div class="num" style="color:var(--accent)">2M+</div><div class="lab">Views Generated</div><p>Organic views on client content &mdash; on Instagram alone, before other platforms are counted.</p></div><div class="metric"><div class="num">10&times;</div><div class="lab">Audience Growth</div><p>Client following taken from roughly 1,000 to over 10,000 across platforms.</p></div><div class="metric"><div class="num">6</div><div class="lab">Platforms Operated</div><p>Instagram, TikTok, YouTube, Snapchat, Twitch and Kick &mdash; managed as one system.</p></div><div class="metric"><div class="num">1</div><div class="lab">Platform We Own</div><p>Clipsy, our in-house clipping network and campaign aggregator.</p></div></div>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap">
+    <div class="row between wrapf gap24 mb48" style="align-items:flex-end">
+      <div>
+        <div class="eyebrow mb16">Selected work</div>
+        <h2 class="sec">Proof, not promises.</h2>
       </div>
-    </article>
-  );
-}
-
-function CaseStudies() {
-  return (
-    <section id="work" className="px-6 md:px-10 py-24 border-b" style={{borderColor:"var(--border-soft)"}}>
-      <div className="max-w-[1400px] mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-          <div>
-            <div className="eyebrow mb-4">Accomplishments — Selected Reels</div>
-            <h2 className="font-display h-section">Work built to <span style={{color:"var(--accent)"}}>outlast</span> the algorithm.</h2>
-          </div>
-          <p className="max-w-sm text-sm" style={{color:"var(--text-dim)"}}>
-            Four operations, one discipline: turn a single moment into a system that keeps producing after the moment fades.
-          </p>
-        </div>
-        <div className="grid lg:grid-cols-12 gap-6">
-          {CASES.map((c, i) => <CaseCard key={i} c={c} />)}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Method() {
-  const points = [
-    { Icon: TrendUp, title: "Read it like a desk", body: "Retention curves, comment velocity, and platform fingerprinting get the same scrutiny a trading desk gives a position." },
-    { Icon: Radio, title: "Distribution is the product", body: "A great clip that reaches one feed is a rounding error. We build the network the clip travels through." },
-    { Icon: Globe, title: "Native to every platform", body: "The same story, re-engineered for how Instagram, TikTok, YouTube and Snapchat actually reward attention." },
-  ];
-  return (
-    <section id="method" className="px-6 md:px-10 py-24 border-b" style={{borderColor:"var(--border-soft)"}}>
-      <div className="max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-14">
-        <div className="lg:col-span-5">
-          <div className="eyebrow mb-4">The Edge</div>
-          <h2 className="font-display h-section mb-6">Built by an operator, not a marketing department.</h2>
-          <p className="text-[15px] leading-relaxed" style={{color:"var(--text-dim)"}}>
-            Apex Media is run the way a trading desk is run — every platform is a position, every post is a data point,
-            and distribution is a system, not a stroke of luck. We came from finance, not film school, which is why we
-            obsess over the numbers most media teams skip. Content is the product. Distribution is the edge.
-          </p>
-        </div>
-        <div className="lg:col-span-7 grid sm:grid-cols-3 gap-px" style={{background:"var(--border-soft)"}}>
-          {points.map((p, i) => (
-            <div key={i} className="p-7" style={{background:"var(--bg)"}}>
-              <p.Icon size={22} className="mb-5" style={{color:"var(--accent)"}} />
-              <h4 className="font-display text-base mb-3 tracking-tight">{p.title}</h4>
-              <p className="text-[13.5px] leading-relaxed" style={{color:"var(--text-dim)"}}>{p.body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Clipsy() {
-  return (
-    <section id="clipsy" className="px-6 md:px-10 py-24 border-b" style={{borderColor:"var(--border-soft)"}}>
-      <div className="max-w-[1400px] mx-auto border" style={{borderColor:"var(--border)"}}>
-        <div className="grid lg:grid-cols-12">
-          <div className="lg:col-span-7 p-9 md:p-14">
-            <div className="eyebrow mb-5">Product — clipsy.club</div>
-            <h2 className="font-display h-section mb-6">The Clipsy Ecosystem</h2>
-            <p className="text-[15px] leading-relaxed mb-6" style={{color:"var(--text-dim)"}}>
-              Raw footage isn't an asset until it's cut, tagged, and pushed to the platforms that reward it fastest.
-              Clipsy is our answer at the infrastructure level: an aggregator that pulls clipping campaigns from
-              Whop, clipping.net, and other sources into one destination — <em style={{color:"var(--text)", fontStyle:"normal"}}>"Everything clipping, in one place."</em> —
-              then routes that traffic into a Discord built to keep clippers producing and brands coming back.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {["Aggregation Layer","Discord Community","Reddit / X Growth","Brand Deal Funnel"].map((t,i) => (
-                <span key={i} className="font-mono text-[11px] uppercase px-3 py-1.5 border" style={{borderColor:"var(--border)", color:"var(--text-dim)", letterSpacing:"0.06em"}}>{t}</span>
-              ))}
-            </div>
-          </div>
-          <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l p-9 md:p-14 flex flex-col justify-center" style={{borderColor:"var(--border)", background:"var(--surface)"}}>
-            <Scissors size={30} style={{color:"var(--accent)"}} className="mb-6" />
-            <div className="font-mono text-xs uppercase mb-2" style={{color:"var(--text-faint)", letterSpacing:"0.1em"}}>Status</div>
-            <div className="flex items-center gap-2 mb-6">
-              <span className="rec-dot"></span>
-              <span className="font-display text-lg tracking-tight">LIVE AT CLIPSY.CLUB</span>
-            </div>
-            <p className="text-[13.5px] leading-relaxed" style={{color:"var(--text-dim)"}}>
-              Built to feel distinct from clipping.net's production polish while matching it — a front door
-              designed to convert visitors into a community, not just a bounce.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
-  const [copied, setCopied] = useState(false);
-  const email = "hello@apexmedia.co";
-  const copyEmail = async () => {
-    try { await navigator.clipboard.writeText(email); } catch (e) {}
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1800);
-  };
-  return (
-    <footer id="contact" className="px-6 md:px-10 pt-24 pb-10">
-      <div className="max-w-[1400px] mx-auto">
-        <div className="grid lg:grid-cols-12 gap-10 items-end pb-16 border-b" style={{borderColor:"var(--border-soft)"}}>
-          <div className="lg:col-span-8">
-            <div className="eyebrow mb-5">Let's Talk</div>
-            <h2 className="font-display h-hero" style={{fontSize:"clamp(2.4rem,6.5vw,5.4rem)"}}>
-              Let's build <span style={{color:"var(--accent)"}}>your</span> feed.
-            </h2>
-          </div>
-          <div className="lg:col-span-4 flex flex-col gap-4 lg:items-end">
-            <button onClick={copyEmail} className="btn-fill w-full lg:w-auto inline-flex items-center justify-center gap-3 px-6 py-4 font-mono text-sm" style={{background:"var(--accent)", color:"#0a0a0c"}}>
-              {copied ? <><Check size={16}/> Copied</> : <><Mail size={16}/> {email}</>}
-            </button>
-            <a href={`mailto:${email}`} className="inline-flex items-center gap-2 font-mono text-xs uppercase nav-link" style={{color:"var(--text-dim)", letterSpacing:"0.06em"}}>
-              or open your mail app <ArrowUpRight size={13}/>
-            </a>
-          </div>
-        </div>
-        <div className="pt-8 flex flex-col md:flex-row gap-4 md:items-center md:justify-between font-mono text-[11px] uppercase" style={{color:"var(--text-faint)", letterSpacing:"0.08em"}}>
-          <div className="flex items-center gap-2">
-            <span className="rec-dot"></span> Apex Media Network — Dorado Beach, Puerto Rico
-          </div>
-          <div className="flex gap-6">
-            <span>© 2026 APX</span>
-            <a href="#top" className="nav-link">Back to Top ↑</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-function App() {
-  return (
-    <div className="relative z-10">
-      <div className="grain-field"></div>
-      <Nav />
-      <Hero />
-      <Ticker />
-      <Metrics />
-      <CaseStudies />
-      <Method />
-      <Clipsy />
-      <Footer />
+      <a class="btn" href="/work">All work <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
     </div>
-  );
-}
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    <a class="case brackets" href="/work/jebin-john" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+      <div class="panel tall">
+  <div class="scan"></div>
+  <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid meet"><rect x="30" y="22" width="104" height="62" fill="#121316" stroke="#26272c"/><rect x="40" y="62" width="58" height="4" fill="#26272c"/><rect x="40" y="70" width="34" height="4" fill="#26272c"/><text x="40" y="44" fill="#61636b" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">HOOK</text><rect x="148" y="22" width="104" height="62" fill="#121316" stroke="#ff4b23"/><rect x="158" y="62" width="44" height="4" fill="#26272c"/><rect x="158" y="70" width="34" height="4" fill="#26272c"/><text x="158" y="44" fill="#ff4b23" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">REEL</text><path d="M228 62 l12 7 -12 7 z" fill="#ff4b23"/><rect x="266" y="22" width="104" height="62" fill="#121316" stroke="#26272c"/><rect x="276" y="62" width="58" height="4" fill="#26272c"/><rect x="276" y="70" width="34" height="4" fill="#26272c"/><text x="276" y="44" fill="#61636b" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">BTS</text><rect x="30" y="96" width="104" height="62" fill="#121316" stroke="#26272c"/><rect x="40" y="136" width="58" height="4" fill="#26272c"/><rect x="40" y="144" width="34" height="4" fill="#26272c"/><text x="40" y="118" fill="#61636b" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">EDIT</text><rect x="148" y="96" width="104" height="62" fill="#121316" stroke="#26272c"/><rect x="158" y="136" width="58" height="4" fill="#26272c"/><rect x="158" y="144" width="34" height="4" fill="#26272c"/><text x="158" y="118" fill="#61636b" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">LIVE</text><rect x="266" y="96" width="104" height="62" fill="#121316" stroke="#26272c"/><rect x="276" y="136" width="58" height="4" fill="#26272c"/><rect x="276" y="144" width="34" height="4" fill="#26272c"/><text x="276" y="118" fill="#61636b" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">CLIP</text><text x="30" y="190" fill="#61636b" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">PUBLISH CADENCE</text><circle cx="30" cy="204" r="3" fill="#ff4b23" opacity="0.35"/><circle cx="39" cy="204" r="3" fill="#ff4b23" opacity="0.6"/><circle cx="48" cy="204" r="3" fill="#ff4b23" opacity="0.85"/><circle cx="82" cy="204" r="3" fill="#ff4b23" opacity="0.35"/><circle cx="91" cy="204" r="3" fill="#ff4b23" opacity="0.6"/><circle cx="100" cy="204" r="3" fill="#ff4b23" opacity="0.85"/><circle cx="134" cy="204" r="3" fill="#ff4b23" opacity="0.35"/><circle cx="143" cy="204" r="3" fill="#ff4b23" opacity="0.6"/><circle cx="152" cy="204" r="3" fill="#ff4b23" opacity="0.85"/><circle cx="186" cy="204" r="3" fill="#ff4b23" opacity="0.35"/><circle cx="195" cy="204" r="3" fill="#ff4b23" opacity="0.6"/><circle cx="204" cy="204" r="3" fill="#ff4b23" opacity="0.85"/><circle cx="238" cy="204" r="3" fill="#ff4b23" opacity="0.35"/><circle cx="247" cy="204" r="3" fill="#ff4b23" opacity="0.6"/><circle cx="256" cy="204" r="3" fill="#ff4b23" opacity="0.85"/><circle cx="290" cy="204" r="3" fill="#ff4b23" opacity="0.35"/><circle cx="299" cy="204" r="3" fill="#ff4b23" opacity="0.6"/><circle cx="308" cy="204" r="3" fill="#ff4b23" opacity="0.85"/><circle cx="342" cy="204" r="3" fill="#ff4b23" opacity="0.35"/><circle cx="351" cy="204" r="3" fill="#ff4b23" opacity="0.6"/><circle cx="360" cy="204" r="3" fill="#ff4b23" opacity="0.85"/><text x="370" y="190" fill="#9a9ca3" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="end">3 / DAY</text></svg>
+  <span class="hud tl"><span class="rec"></span> REC &middot; CLIENT</span>
+  <span class="hud br">00:01:22:04</span>
+</div>
+      <div class="body" style="display:flex;flex-direction:column;justify-content:center">
+        <div class="meta"><span>Case Study 01</span><span class="tag on">Full media team</span></div>
+        <h3 class="sub mb16">Jebin John &mdash; 2M+ views, one media team, zero gaps in the feed</h3>
+        <p style="font-size:.95rem">We took over the entire content operation for creator Jebin John: filming on set, editing every clip, writing and scheduling posts across four platforms, managing the comment sections, and turning a Netflix appearance into sustained brand momentum. 2M+ views on Instagram alone, with the audience grown roughly 10&times;. Ongoing since July 2026.</p>
+        <span class="card-link">Read the case study <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <div class="grid g2 mt24">
+      <a class="case brackets" href="/clipsy">
+        <div class="panel">
+  <div class="scan"></div>
+  <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid meet"><rect x="26" y="20" width="348" height="190" fill="#121316" stroke="#26272c"/><line x1="26" y1="46" x2="374" y2="46" stroke="#26272c"/><circle cx="40" cy="33" r="3.5" fill="#26272c"/><circle cx="53" cy="33" r="3.5" fill="#26272c"/><circle cx="66" cy="33" r="3.5" fill="#26272c"/><rect x="92" y="26" width="130" height="14" fill="#0f1013" stroke="#26272c"/><text x="100" y="36" fill="#9a9ca3" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">clipsy.club</text><text x="42" y="68" fill="#f1efe9" font-family="'JetBrains Mono',monospace" font-size="9" letter-spacing="1.2" text-anchor="start">EVERYTHING CLIPPING, IN ONE PLACE</text><rect x="42" y="84" width="316" height="30" fill="#0f1013" stroke="#26272c"/><text x="54" y="103" fill="#9a9ca3" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">FILM CAMPAIGN</text><rect x="268" y="92" width="78" height="14" fill="none" stroke="#ff4b23"/><text x="307" y="102" fill="#ff4b23" font-family="'JetBrains Mono',monospace" font-size="7" letter-spacing="1.4" text-anchor="middle">$80 / 100K</text><rect x="42" y="122" width="316" height="30" fill="#0f1013" stroke="#26272c"/><text x="54" y="141" fill="#9a9ca3" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">MUSIC CAMPAIGN</text><rect x="268" y="130" width="78" height="14" fill="none" stroke="#ff4b23"/><text x="307" y="140" fill="#ff4b23" font-family="'JetBrains Mono',monospace" font-size="7" letter-spacing="1.4" text-anchor="middle">$100 / 100K</text><rect x="42" y="160" width="316" height="30" fill="#0f1013" stroke="#26272c"/><text x="54" y="179" fill="#9a9ca3" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">BRAND CAMPAIGN</text><rect x="268" y="168" width="78" height="14" fill="none" stroke="#ff4b23"/><text x="307" y="178" fill="#ff4b23" font-family="'JetBrains Mono',monospace" font-size="7" letter-spacing="1.4" text-anchor="middle">$125 / 100K</text></svg>
+  <span class="hud tl"><span class="rec"></span> BUILD</span>
+  <span class="hud br">00:00:41:19</span>
+</div>
+        <div class="body">
+          <div class="meta"><span>In-house platform</span><span class="tag on">Clipsy</span></div>
+          <h3 class="sub mb16">We built the front door for an entire industry</h3>
+          <p style="font-size:.94rem">Clipsy aggregates clipping campaigns from across the web into one place and routes clippers into a managed Discord community. Wholly owned and operated by Apex Media.</p>
+          <span class="card-link">See Clipsy <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="case brackets" href="/work#finance">
+        <div class="panel">
+  <div class="scan"></div>
+  <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid meet"><text x="28" y="26" fill="#61636b" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">TIMELINE</text><line x1="28" y1="34" x2="28" y2="40" stroke="#26272c"/><line x1="62" y1="34" x2="62" y2="40" stroke="#26272c"/><line x1="96" y1="34" x2="96" y2="40" stroke="#26272c"/><line x1="130" y1="34" x2="130" y2="40" stroke="#26272c"/><line x1="164" y1="34" x2="164" y2="40" stroke="#26272c"/><line x1="198" y1="34" x2="198" y2="40" stroke="#26272c"/><line x1="232" y1="34" x2="232" y2="40" stroke="#26272c"/><line x1="266" y1="34" x2="266" y2="40" stroke="#26272c"/><line x1="300" y1="34" x2="300" y2="40" stroke="#26272c"/><line x1="334" y1="34" x2="334" y2="40" stroke="#26272c"/><line x1="368" y1="34" x2="368" y2="40" stroke="#26272c"/><rect x="28" y="52" width="88" height="34" fill="#121316" stroke="#26272c"/><text x="36" y="72" fill="#61636b" font-family="'JetBrains Mono',monospace" font-size="7" letter-spacing="1.4" text-anchor="start">CLIP 01</text><rect x="122" y="52" width="64" height="34" fill="#121316" stroke="#ff4b23"/><text x="130" y="72" fill="#ff4b23" font-family="'JetBrains Mono',monospace" font-size="7" letter-spacing="1.4" text-anchor="start">CLIP 02</text><rect x="192" y="52" width="52" height="34" fill="#121316" stroke="#26272c"/><text x="200" y="72" fill="#61636b" font-family="'JetBrains Mono',monospace" font-size="7" letter-spacing="1.4" text-anchor="start">CLIP 03</text><rect x="250" y="52" width="120" height="34" fill="#121316" stroke="#26272c"/><text x="258" y="72" fill="#61636b" font-family="'JetBrains Mono',monospace" font-size="7" letter-spacing="1.4" text-anchor="start">CLIP 04</text><text x="28" y="106" fill="#61636b" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">AUDIO</text><rect x="28" y="125.0" width="3" height="6.0" fill="#26272c"/><rect x="34" y="117.9136054403854" width="3" height="20.2" fill="#26272c"/><rect x="40" y="114.16005297012694" width="3" height="27.7" fill="#26272c"/><rect x="46" y="115.50469696686238" width="3" height="25.0" fill="#26272c"/><rect x="52" y="121.31513034828504" width="3" height="13.4" fill="#26272c"/><rect x="58" y="121.14138449541419" width="3" height="13.7" fill="#26272c"/><rect x="64" y="115.41266650345054" width="3" height="25.2" fill="#26272c"/><rect x="70" y="114.19302126113234" width="3" height="27.6" fill="#26272c"/><rect x="76" y="118.05606698340446" width="3" height="19.9" fill="#26272c"/><rect x="82" y="124.81504709467215" width="3" height="6.4" fill="#26272c"/><rect x="88" y="117.77314741409332" width="3" height="20.5" fill="#26272c"/><rect x="94" y="114.13014942735299" width="3" height="27.7" fill="#26272c"/><rect x="100" y="115.5994120110289" width="3" height="24.8" fill="#26272c"/><rect x="106" y="121.48991801415713" width="3" height="13.0" fill="#26272c"/><rect x="112" y="120.9687295782288" width="3" height="14.1" fill="#26272c"/><rect x="118" y="115.32334664031163" width="3" height="25.4" fill="#26272c"/><rect x="124" y="114.22904497933551" width="3" height="27.5" fill="#26272c"/><rect x="130" y="118.20049176539261" width="3" height="19.6" fill="#26272c"/><rect x="136" y="124.63014648056749" width="3" height="6.7" fill="#26272c"/><rect x="142" y="117.6347326158374" width="3" height="20.7" fill="#26272c"/><rect x="148" y="114.10331908735643" width="3" height="27.8" fill="#26272c"/><rect x="154" y="115.69678485742773" width="3" height="24.6" fill="#26272c"/><rect x="160" y="121.66569807579725" width="3" height="12.7" fill="#26272c"/><rect x="166" y="120.79721441097594" width="3" height="14.4" fill="#26272c"/><rect x="172" y="115.23676263060347" width="3" height="25.5" fill="#26272c"/><rect x="178" y="114.26811393985027" width="3" height="27.5" fill="#26272c"/><rect x="184" y="118.34683895353088" width="3" height="19.3" fill="#26272c"/><rect x="190" y="124.44535043412507" width="3" height="7.1" fill="#26272c"/><rect x="196" y="117.49840017925054" width="3" height="21.0" fill="#26272c"/><rect x="202" y="114.07956953580502" width="3" height="27.8" fill="#26272c"/><rect x="208" y="115.79678797610339" width="3" height="24.4" fill="#26272c"/><rect x="214" y="121.84242083539499" width="3" height="12.3" fill="#26272c"/><rect x="220" y="120.62688748566424" width="3" height="14.7" fill="#26272c"/><rect x="226" y="115.15293895398352" width="3" height="25.7" fill="#26272c"/><rect x="232" y="114.3102170968175" width="3" height="27.4" fill="#26272c"/><rect x="238" y="118.49506717148364" width="3" height="19.0" fill="#26272c"/><rect x="244" y="124.26071120221978" width="3" height="7.5" fill="#26272c"/><rect x="250" y="117.36418864922534" width="3" height="21.3" fill="#26272c"/><rect x="256" y="114.05890748734379" width="3" height="27.9" fill="#26272c"/><rect x="262" y="115.89939309345081" width="3" height="24.2" fill="#26272c"/><rect x="268" y="122.02003632861344" width="3" height="12.0" fill="#26272c"/><rect x="274" y="120.45779695835407" width="3" height="15.1" fill="#26272c"/><rect x="280" y="115.07189930968796" width="3" height="25.9" fill="#26272c"/><rect x="286" y="114.35534254652814" width="3" height="27.3" fill="#26272c"/><rect x="292" y="118.64513451109693" width="3" height="18.7" fill="#26272c"/><rect x="298" y="124.07628098739082" width="3" height="7.8" fill="#26272c"/><rect x="304" y="117.23213597101638" width="3" height="21.5" fill="#26272c"/><rect x="310" y="114.0413387836965" width="3" height="27.9" fill="#26272c"/><rect x="316" y="116.0045712002091" width="3" height="24.0" fill="#26272c"/><rect x="322" y="122.19849433871562" width="3" height="11.6" fill="#26272c"/><rect x="328" y="120.28999063554234" width="3" height="15.4" fill="#26272c"/><rect x="334" y="114.99366660983122" width="3" height="26.0" fill="#26272c"/><rect x="340" y="114.40347753078863" width="3" height="27.2" fill="#26272c"/><rect x="346" y="118.79699854424705" width="3" height="18.4" fill="#26272c"/><rect x="352" y="123.89211193308249" width="3" height="8.2" fill="#26272c"/><rect x="358" y="117.1022794795119" width="3" height="21.8" fill="#26272c"/><rect x="364" y="114.02686839201415" width="3" height="27.9" fill="#26272c"/><rect x="370" y="116.11229255966316" width="3" height="23.8" fill="#26272c"/><text x="28" y="160" fill="#61636b" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="start">CAPTIONS</text><rect x="28" y="168" width="70" height="18" fill="none" stroke="#ff4b23" opacity="0.55"/><rect x="106" y="168" width="54" height="18" fill="none" stroke="#ff4b23" opacity="0.55"/><rect x="170" y="168" width="92" height="18" fill="none" stroke="#ff4b23" opacity="0.55"/><rect x="272" y="168" width="86" height="18" fill="none" stroke="#ff4b23" opacity="0.55"/><line x1="196" y1="44" x2="196" y2="196" stroke="#ff4b23" stroke-width="1.5"/><path d="M190 40 h12 l-6 7 z" fill="#ff4b23"/><text x="372" y="26" fill="#9a9ca3" font-family="'JetBrains Mono',monospace" font-size="7.5" letter-spacing="1.4" text-anchor="end">00:00:38:02</text></svg>
+  <span class="hud tl"><span class="rec"></span> PRODUCTION</span>
+  <span class="hud br">00:00:38:02</span>
+</div>
+        <div class="body">
+          <div class="meta"><span>Original content</span><span class="tag on">Finance vertical</span></div>
+          <h3 class="sub mb16">An original short-form series, produced end to end</h3>
+          <p style="font-size:.94rem">Scripting, voiceover, editing, captions, and platform-native metadata for a serialized finance-entertainment format &mdash; built in-house and published on a batch schedule.</p>
+          <span class="card-link">See the work <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M4 12h15"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="pad">
+  <div class="wrap split" style="align-items:center">
+    <div>
+      <div class="eyebrow mb16">The operators</div>
+      <h2 class="sec mb24">Two operators who<br>actually do the work.</h2>
+      <p>Apex Media is member-managed and hands-on. No account executives, no layers &mdash; the people you talk to are the people filming, cutting, posting, and negotiating your deals.</p>
+      <a class="btn mt32" href="/about">About the company <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+    </div>
+    <div class="grid g2">
+      <div class="card"><div class="display accent" style="font-size:2rem">JJ</div><h4 class="mt16">Jebin John</h4><p style="font-size:.86rem">Managing Member &mdash; Operations, production and client engagements</p></div>
+      <div class="card"><div class="display accent" style="font-size:2rem">DS</div><h4 class="mt16">Darsh Shah</h4><p style="font-size:.86rem">Member &mdash; Community, clipping networks and distribution</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" style="border-bottom:none">
+  <div class="wrap">
+    <div class="row between wrapf gap24" style="align-items:end">
+      <div>
+        <div class="eyebrow mb16">Next step</div>
+        <h2 class="sec">Tell us what you&rsquo;re building.<br>We&rsquo;ll tell you what we&rsquo;d run.</h2>
+      </div>
+      <div class="row wrapf gap16">
+        <a class="btn btn-primary" href="/contact">Start a project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+        <a class="btn" href="mailto:hello@apexmedia.space">hello@apexmedia.space</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="row gap12 mb16"><span class="rec"></span><span class="display" style="font-size:1.3rem">Apex Media</span></div>
+        <p style="font-size:.9rem;max-width:34ch">A Puerto Rico media company. We run content operations end to end for creators and brands — and operate Clipsy, our clipping platform.</p>
+        <a class="row gap8 mt24" href="mailto:hello@apexmedia.space" style="color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:.8rem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg> hello@apexmedia.space</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/about">About</a><a href="/work">Work</a><a href="/services">Services</a><a href="/contact">Contact</a>
+      </div>
+      <div>
+        <h5>Platform</h5>
+        <a href="/clipsy">Clipsy</a>
+        <a href="https://clipsy.club" target="_blank" rel="noopener">clipsy.club &#8599;</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Apex Media LLC &middot; Dorado, Puerto Rico</span>
+      <span>PR Registry No. 588809 &middot; Formed August 19, 2026</span>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var t=document.getElementById('navToggle'),m=document.getElementById('mobileMenu');
+  if(t&&m){t.addEventListener('click',function(){var o=m.classList.toggle('open');t.setAttribute('aria-expanded',o);});}
+})();
 </script>
 </body>
 </html>
