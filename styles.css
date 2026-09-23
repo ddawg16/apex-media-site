@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 /* Apex Media LLC — apexmedia.space */
 
 :root{
@@ -199,3 +200,32 @@ footer{background:var(--bg);padding-top:64px;}
   .ticker-track,.rec{animation:none!important;}
   *{transition-duration:.01ms!important;}
 }
+
+/* Editorial refresh shared with the new homepage */
+:root{--bg:#f5f4ee;--surface:#eef0e8;--surface-2:#e4e9dc;--border:#c8cec3;--border-soft:#dadfd5;--text:#101311;--dim:#586159;--faint:#737d73;--accent:#6b7934;--accent-deep:#445122;--chrome:#101311}
+body{font-family:'DM Sans',sans-serif}
+.display,h1.hero,h2.sec,h3.sub,h4,.prose h2{font-family:Manrope,sans-serif;text-transform:none;letter-spacing:-.06em}
+h1.hero{font-size:clamp(3rem,7vw,6.5rem);line-height:1.04;font-weight:700}
+h2.sec{font-size:clamp(2.5rem,4.8vw,5rem);line-height:1.08;font-weight:700}
+h3.sub{font-size:clamp(1.45rem,2.4vw,2.2rem);line-height:1.12;font-weight:700}
+h4{font-size:1.15rem;line-height:1.3;font-weight:700}
+header.nav{background:rgba(245,244,238,.94);border-bottom-color:var(--border-soft)}
+.brand .mark{font-family:Manrope,sans-serif;font-size:1.1rem;letter-spacing:-.07em}
+.brand .sub{color:var(--dim)}
+.nav-links a,.nav-links a.active{color:var(--text)}
+.btn{border-radius:50px;font-family:'DM Sans',sans-serif;font-size:.84rem;text-transform:none;letter-spacing:0;font-weight:700}
+.btn-primary{color:#101311;background:#d8fc58;border-color:#d8fc58}
+.btn-primary::before{background:#c2ea32}
+.btn-primary:hover{border-color:#c2ea32}
+.rec{background:#d8fc58;box-shadow:none}
+.card,.case{background:var(--bg)}
+.card:hover,.case:hover{background:var(--surface)}
+.eyebrow{font-family:'DM Sans',sans-serif;color:var(--accent);font-weight:700}
+input,textarea,select{font-family:'DM Sans',sans-serif;background:transparent;border:0;border-bottom:1px solid var(--border);border-radius:0}
+input:focus,textarea:focus,select:focus{border-color:var(--text)}
+footer{background:#101311;color:#f5f4ee}
+footer .foot-grid h5,footer .foot-bottom{color:#a8b1a7}
+footer .foot-grid a,footer .foot-grid p{color:#d1d8cf}
+footer .foot-grid a:hover{color:#d8fc58}
+footer .rec{background:#d8fc58}
+footer .display{color:#f5f4ee}
